@@ -24,7 +24,7 @@ public class UserService {
 			, String name
 			, String email) {
 		
-		String encodingPassword = MD5HashingEncoder.encode(password);
+//		String encodingPassword = MD5HashingEncoder.encode(password);
 		
 		int count = userRepository.insertUser(loginId, password, name, email);
 		

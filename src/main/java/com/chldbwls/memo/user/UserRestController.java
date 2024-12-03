@@ -17,6 +17,7 @@ public class UserRestController {
 	
 	private UserService userService;
 	
+	// 생성자
 //	@Autowired
 	public UserRestController(UserService userService) {
 		this.userService = userService;

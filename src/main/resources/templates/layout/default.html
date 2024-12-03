@@ -1,6 +1,6 @@
 <html lang="ko" 
     xmlns:th="http://www.thymeleaf.org" 
-        xmlns:layout="http://www.ultraq.net.nz/thymeleaf/layout">
+    xmlns:layout="http://www.ultraq.net.nz/thymeleaf/layout">
 <head>
 <meta charset="UTF-8">
 <title>Memo</title>
@@ -13,7 +13,7 @@
         <th:block th:replace="~{fragments/header :: header}"></th:block>
 
         <!-- content -->
-        <th:block layout:fragment="content"></th:block>
+        <th:block layout:fragment="contents"></th:block>
 
         <!-- footer -->
         <th:block th:replace="~{fragments/footer :: footer}"></th:block>

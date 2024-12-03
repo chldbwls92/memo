@@ -2,6 +2,7 @@ package com.chldbwls.memo.user.service;
 
 import org.springframework.stereotype.Service;
 
+import com.chldbwls.memo.common.MD5HashingEncoder;
 import com.chldbwls.memo.user.repository.UserRepository;
 
 @Service
@@ -24,9 +25,9 @@ public class UserService {
 			, String name
 			, String email) {
 		
-//		String encodingPassword = MD5HashingEncoder.encode(password);
+		String encodingPassword = MD5HashingEncoder.encode(password);
 		
-		int count = userRepository.insertUser(loginId, password, name, email);
+		int count = userRepository.insertUser(loginId, encodingPassword, name, email);
 		
 		// 잘 저장 됐다 안 됐다
 		if(count == 1) {

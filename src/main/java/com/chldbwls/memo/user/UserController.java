@@ -12,10 +12,10 @@ public class UserController {
 	// view는 responsebody가 없고 api는 responseBody가 있음
 	
 	
-	 @GetMapping("/join-view")
-	   public String inputJoin() {
-	      return "user/join";
-	   }
+	@GetMapping("/join-view")
+	public String inputJoin() {
+		return "user/join";
+	}
 	 
 	 @GetMapping("/login-view")
 	 public String inputlogin() {

@@ -3,6 +3,7 @@ package com.chldbwls.memo.user.service;
 import org.springframework.stereotype.Service;
 
 import com.chldbwls.memo.common.MD5HashingEncoder;
+import com.chldbwls.memo.user.domain.User;
 import com.chldbwls.memo.user.repository.UserRepository;
 
 @Service
@@ -35,6 +36,12 @@ public class UserService {
 		} else {
 			return false;
 		}
+		
+	}
+	
+	public User getUser(String loginId, String password) {
+		return userRepository.selectUser(loginId, password);
+		// user 자체 return
 		
 	}
 }

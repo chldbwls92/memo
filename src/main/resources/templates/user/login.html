@@ -1,29 +1,61 @@
 <!DOCTYPE html>
-<html>
-<head>
-<meta charset="UTF-8">
-<title>Insert title here</title>
-<link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap@4.6.2/dist/css/bootstrap.min.css" integrity="sha384-xOolHFLEh07PJGoPkLv1IbcEPTNtaed2xpHsD9ESMhqIYd0nLMwNLD69Npy4HI+N" crossorigin="anonymous">
-<link rel="stylesheet" href="/static/css/style.css">
-</head>
-<body>
+<html xmlns:th="http://www.thymeleaf.org"
+      xmlns:layout="http://www.ultraq.net.nz/thymeleaf/layout"
+      layout:decorate="~{layout/default}">
+
 
 	<div id="wrap">
-	      <header class="d-flex align-items-center">
-	         <h1 class="ml-3">Memo</h1>
-	      </header>
-	      <section class="contents d-flex justify-content-center">
+	      <section layout:fragment="contents" class="contents d-flex justify-content-center">
 	         <div class="input-box my-5 p-5 rounded-lg">
 	            <h1 class="text-center">로그인</h1>
-	            <input type="text" class="form-control mt-4" placeholder="아이디">
+	            <input type="text" class="form-control mt-4" id="loginIdInput" placeholder="아이디">
 	            <input type="password" class="form-control mt-2" id="passwordInput" placeholder="비밀번호">
-	            <button type="button" class="btn btn-secondary btn-block mt-3">로그인</button>
+	            <button type="submit" id="loginBtn" class="btn btn-secondary btn-block mt-3">로그인</button>
 	            <div class="text-center mt-3">
 		            <a href="/user/join-view">회원가입</a>
 	            </div>
 	         </div>
 	      </section>
       </div>
+      
+      <script layout:fragment="script">
+      $(document).ready(function() {
+    	  $("#loginBtn").on("click", function() {
+    		  let id = $("#loginIdInput").val();
+    		  let password = $("#passwordInput").val();
+    		  
+    		  if(id == "") {
+					alert("아이디를 입력하세요");
+					return;
+				}
+    		  
+    		  if(password == "") {
+					alert("비밀번호를 입력하세요");
+					return;
+				}
+    		  
+    		  $.ajax({
+    			  type:"post"
+    			  , url:"/user/login"
+    			  ,data:{"loginId":id, "password":password}
+    		  	  ,success:function(response) {
+    		  		  if(response.result == "success") {
+    		  			  location.href = "/post/list-view";
+    		  		  } else {
+    		  			  alert("아이디와 비밀번호를 확인해주세요");
+    		  		  }
+    		  	  }
+    		  	  , error:function() {
+    		  		  alert("로그인 에러!")
+    		  	  }
+    		  })
+    		  
+    	  })
+      })
+      
+      
+      
+      </script>
 
 </body>
 </html>

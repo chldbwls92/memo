@@ -40,7 +40,10 @@ public class UserService {
 	}
 	
 	public User getUser(String loginId, String password) {
-		return userRepository.selectUser(loginId, password);
+		
+		// 항상 같은 암호화 생성
+		String encodingPassword = MD5HashingEncoder.encode(password);
+		return userRepository.selectUser(loginId, encodingPassword);
 		// user 자체 return
 		
 	}

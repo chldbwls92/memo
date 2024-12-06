@@ -1,11 +1,13 @@
 package com.chldbwls.memo.post;
 
+import java.util.HashMap;
 import java.util.Map;
 
 import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.bind.annotation.RestController;
+import org.springframework.web.multipart.MultipartFile;
 
 import com.chldbwls.memo.post.service.PostService;
 
@@ -25,11 +27,22 @@ public class PostRestController {
 	public Map<String, String> createMemo(
 			@RequestParam("title") String title
 			, @RequestParam("contents") String contents
+			, @RequestParam("imageFile") MultipartFile file
 			, HttpSession session) {
 		// + 세션관리까지 하게 됨
 		int userId = session.getAttribute("userId");
+		Map<String, String> resultMap = new HashMap<>();
+		
+		if(postService.addPost(userId, title, contents, file)) {
+			resultMap.put("result", "success");
+		} else {
+			resultMap.put("result", "fail");
+		}
 		
 		postService.addPost(0, title, contents);
 	}
+	
+
+	
 	
 }

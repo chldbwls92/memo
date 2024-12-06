@@ -16,4 +16,36 @@
       		</div>
       	</div>
       </section>
+      
+      <script layout:fragment="script">
+      	$(document).ready(function() {
+      		$("#saveBtn").on("click", function() {
+      			let title = $("#titleInput").val();
+      			let contents = $("#contents").val();
+      			
+      			let formData = new FormData();
+      			formData.append("title", title);
+      			formData.append("contents", contents);
+      			formData.append("iamgeFile",file);
+      			
+      			$.ajax({
+      				type:"post"
+      				, url:"/post/create"
+      				,data:formData
+      				, enctype:"multipart/form-data" // 파일 업로드 추가 옵션
+      				, processData:false // 파일 업로드 추가 옵션
+      				, contentType:false // 파일 업로드 추가 옵션
+      				, success:funtion(response) {
+      					if(response.result == "success") {
+      						location.href = "/post/list-view";
+      					} else {
+      						alert("작성 실패");
+      					}
+      				}
+      				
+      			});
+      		})
+      	)};
+      
+      </script>
 </html>

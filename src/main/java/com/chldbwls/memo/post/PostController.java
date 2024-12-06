@@ -12,5 +12,11 @@ public class PostController {
 	public String memoList() {
 		return "post/list";
 	}
+	
+	
+	@GetMapping("/create-view")
+	public String inputMemo() {
+		return "post/input";
+	}
 
 }

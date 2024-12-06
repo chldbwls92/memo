@@ -19,8 +19,6 @@ public class MD5HashingEncoder {
 			messageDigest.update(bytes);
 			// bytes가 된 메시지를 암호화하여 전달
 			
-			messageDigest.update(bytes);
-			
 			byte[] digest = messageDigest.digest();
 			
 			for(int i = 0; i < digest.length; i++) {

@@ -40,7 +40,6 @@ public class PostRestController {
 			resultMap.put("result", "fail");
 		}
 		
-		postService.addPost(userId, title, contents, file);
 		return resultMap;
 	}
 	

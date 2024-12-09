@@ -49,7 +49,7 @@ public class PostService {
 	
 	// 특정 사용자의 메모만 볼 수 있도록 userId 가져오기
 	public List<Post> getPostList(int userId) {
-		return postRepository.findGyUserIdOrderByIdDesc(userId);
+		return postRepository.findByUserIdOrderByIdDesc(userId);
 	}
 	
 	// 하나의 행 수행

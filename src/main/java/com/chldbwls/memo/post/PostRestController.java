@@ -30,7 +30,8 @@ public class PostRestController {
 			, @RequestParam("imageFile") MultipartFile file
 			, HttpSession session) {
 		// + 세션관리까지 하게 됨
-		int userId = session.getAttribute("userId");
+		// 다운캐스팅 해야돼서 integer
+		int userId = (Integer)session.getAttribute("userId");
 		Map<String, String> resultMap = new HashMap<>();
 		
 		if(postService.addPost(userId, title, contents, file)) {
@@ -39,7 +40,8 @@ public class PostRestController {
 			resultMap.put("result", "fail");
 		}
 		
-		postService.addPost(0, title, contents);
+		postService.addPost(userId, title, contents, file);
+		return resultMap;
 	}
 	
 

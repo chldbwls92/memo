@@ -15,7 +15,7 @@ public class FileManager {
 	// 멤버변수에도 static 붙이면 객체 생성 없이도 사용할 수 있음
 	// final == (최초 세팅한) 변수값을 바꾸지 못하도록 하는
 	// => 상수!!!!!!!!!!!!(변수x)
-	public static final String FILE_UPLOAD_PATH = "D:\\cujSpringProject\\upload\\memo";
+	public static final String FILE_UPLOAD_PATH = "C:\\springProject\\upload\\memo";
 	// 이 경로를 url path와 연결시켜야됨
 	
 	// 파일 저장하는 기능	

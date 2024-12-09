@@ -41,15 +41,19 @@ public class PostService {
 		}
 	}
 	
+	public List<Post> getPostList() {
+		// 해당되는 모든 행 return(원래 있음)
+		return postRepository.findAll();
+	}
+	
 	
 	// 특정 사용자의 메모만 볼 수 있도록 userId 가져오기
 	public List<Post> getPostList(int userId) {
-		return postRepository.findGyUserIdOrderBuIdDesc(userId);
+		return postRepository.findGyUserIdOrderByIdDesc(userId);
 	}
 	
 	// 하나의 행 수행
 	public Post getPost(int id) {
-		
 		Optional<Post> optionalPost = postRepository.findById(id);
 		
 		return optionalPost.orElse(null);

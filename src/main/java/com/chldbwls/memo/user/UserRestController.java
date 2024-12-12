@@ -62,7 +62,7 @@ public class UserRestController {
 		// 조회된 결과가 있다 없다
 		// user 가 null이냐 아니냐
 		if(user != null) {
-			
+			// 성공했을 경우
 			// 서블릿 기반
 			HttpSession session = request.getSession();
 			

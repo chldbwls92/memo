@@ -27,7 +27,7 @@ public class PostController {
 	public String memoList(
 			Model model
 			,HttpSession session) {
-		
+		// 현재 로그인한 정보 session 통해서 가져올 수 있음
 		int userId = (Integer)session.getAttribute("userId");
 		
 		List<Post> memoList = postService.getPostList();

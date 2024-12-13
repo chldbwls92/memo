@@ -35,7 +35,7 @@
       				return;
       			}
       			
-      			// form 요소 쉽게 내보내주는 요소
+      			// form을 통해 file data 쉽게 내보내주는 요소
       			let formData = new FormData();
       			formData.append("title", title);
       			formData.append("contents", contents);
@@ -44,7 +44,10 @@
       			$.ajax({
       				type:"post"
       				, url:"/post/create"
-      				, data:{"title":title, "contents":contents}
+      				, data:formData
+      				, enctype:"multipart/form-data" // 파일 업로드 추가 옵션
+      				, processData:false // 파일 업로드 추가 옵션
+      				, contentType:false // 파일 업로드 추가 옵션
       				, success:function(response) {
       					if(response.result == "success") {
       						location.href = "/post/list-view";
@@ -57,27 +60,6 @@
       					alert("작성 에러!");
       				}
       			});
-      			
-      			
-      			$.ajax({
-      				type:"post"
-      				, url:"/post/create"
-      				,data:formData
-      				, enctype:"multipart/form-data" // 파일 업로드 추가 옵션
-      				, processData:false // 파일 업로드 추가 옵션
-      				, contentType:false // 파일 업로드 추가 옵션
-      				, success:function(response) {
-      					if(response.result == "success") {
-      						location.href = "/post/list-view";
-      					} else {
-      						alert("작성 실패");
-      					}
-      				}
-      				, error:function() {
-      					alert("파일 관련 작성 에러!");
-      				}
-      			});
-      			
       			
       			
       		});

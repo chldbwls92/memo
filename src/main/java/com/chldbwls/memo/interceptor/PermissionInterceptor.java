@@ -19,6 +19,8 @@ public class PermissionInterceptor implements HandlerInterceptor {
 		HttpSession session = request.getSession();
 		
 		// null이 가능한 mapper class integer
+		// null이냐 아니냐를 구분하기 위해
+		// null = 로그인이 안 된 상태
 		Integer userId = (Integer)session.getAttribute("id");
 		
 		// /post/list-view
@@ -38,11 +40,18 @@ public class PermissionInterceptor implements HandlerInterceptor {
 				return false; // controller로의 진행 막음(true일 경우만 진행해서)
 			}
 			
+		} else {
+			// 예외처리
+			// 로그인이 되어있는 경우 사용자와 관련된 페이지 접근을 막는다
+			// 메모 리스트 페이지로 이동
+			// /user로 시작하는 url path 확인
+			if(uri.startsWith("/user")) {
+				response.sendRedirect("/post/list-view");
+				return false; // 원래 하려던 기능 중단
+			}
+			
 		}
 		
-		// 예외처리
-		// 로그인이 되어있는 경우 사용자와 관련된 페이지 접근을 막는다
-		// 메모 리스트 페이지로 이동
 		
 		
 		

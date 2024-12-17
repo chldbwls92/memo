@@ -17,7 +17,7 @@ import lombok.Getter;
 import lombok.NoArgsConstructor;
 import lombok.Setter;
 
-@Builder //롬복
+@Builder(toBuilder=true) //롬복
 @NoArgsConstructor
 @AllArgsConstructor
 @Setter

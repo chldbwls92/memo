@@ -21,6 +21,10 @@ public class FileManager {
 	// 파일 저장하는 기능	
 	public static String saveFile(int userId, MultipartFile file) {
 		
+		if(file == null) {
+			return null;
+		}
+		
 		// 파일 이름 유지
 		// 같은 이름의 파일이 전달 될 경우를 대비하여 디렉토리를 만들어서 파일 저장
 		// 사용자별로 구분하여 저장 => 디렉토리 이름에 사용자 정보 포함
